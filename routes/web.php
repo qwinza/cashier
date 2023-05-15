@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CashierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,4 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.index');

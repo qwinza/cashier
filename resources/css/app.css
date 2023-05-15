@@ -84,3 +84,89 @@ img {
         width: 400px;
     }
 }
+
+.cashier-wrapper {
+    padding: 2rem;
+}
+
+.head-bang {
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+}
+
+.cashier-container-grid {
+    display: grid;
+    grid-template-columns: 1fr .5fr;
+    gap: 2.5rem;
+}
+
+.cashier-info-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.action-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.action-container button {
+    padding-block: .7rem;
+    padding-inline: 1rem;
+    cursor: pointer;
+}
+
+.cashier-log-container {
+    grid-column: 1 / 2;
+}
+
+.cashier-info-field {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.cashier-info-field div {
+    background: orange;
+}
+
+.cashier-info-field div input {
+    font-size: 16px;
+    padding-block: .2rem;
+    border: none;
+    background: none;
+}
+
+.cashier-info-field.bayar div {
+    background: initial;
+}
+
+.cashier-info-field.bayar div input {
+    background: initial;
+    border: 1px solid black;
+}
+
+.cashier-info-field:not(:last-child) {
+    margin-bottom: .2rem;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+}
+
+.table-row-log:nth-child(odd) {
+    background: rgba(211, 209, 209, 0.95);
+}
+
+.table-row-log-heading {
+    background: black;
+    color: white;
+}
