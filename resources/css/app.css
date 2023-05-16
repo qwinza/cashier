@@ -170,3 +170,35 @@ table {
     background: black;
     color: white;
 }
+
+.fw-input {
+    width: calc(100% - .5rem);
+    font-size: 1rem;
+}
+
+.select-input {
+    width: 100%;
+}
+
+.table-input-caption {
+    background: #01c401;
+}
+
+.grayish {
+    background: rgba(211, 209, 209, 0.95);
+}
+
+.right-text {
+    text-align: right;
+}
+
+.table-input-action-container {
+    padding: 1rem;
+    text-align: right;
+}
+
+.table-input-action-container button {
+    padding-inline: 2rem;
+    padding-block: .7rem;
+    cursor: pointer;
+}

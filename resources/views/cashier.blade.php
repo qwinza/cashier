@@ -71,21 +71,21 @@
         </div>
         <div>
             <table>
-                <caption>Input</caption>
+                <caption class="table-input-caption">Input</caption>
                 <tr>
                     <td>No. Transaksi</td>
-                    <td>N-00000001</td>
+                    <td class="grayish right-text">N-00000001</td>
                 </tr>
                 <tr>
                     <td>Tanggal</td>
-                    <td>15 Maret 2022</td>
+                    <td class="grayish right-text">15 Maret 2022</td>
                 </tr>
                 <tr>
                     <td>
                         <label for="customer">Customer</label>
                     </td>
                     <td>
-                        <input type="text" name="customer" id="customer">
+                        <input class="fw-input right-text" type="text" name="customer" id="customer">
                     </td>
                 </tr>
                 <tr>
@@ -93,37 +93,37 @@
                         <label for="nama-barang">Nama barang</label>
                     </td>
                     <td>
-                        <select id="nama-barang" name="nama-barang">
-                            <option value="a">a</option>
-                            <option value="a">a</option>
-                            <option value="a">a</option>
+                        <select class="select-input right-text" id="nama-barang" name="nama-barang">
+                            <option class="right-text" value="a">a</option>
+                            <option class="right-text" value="a">a</option>
+                            <option class="right-text" value="a">a</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Harga</td>
-                    <td>5jt</td>
+                    <td class="grayish right-text"></td>
                 </tr>
                 <tr>
                     <td>
                         <label for="banyaknya">Banyaknya</label>
                     </td>
                     <td>
-                        <input type="text" name="banyaknya" id="banyaknya">
+                        <input class="fw-input right-text" type="text" name="banyaknya" id="banyaknya">
                     </td>
                 </tr>
                 <tr>
                     <td>Jumlah</td>
-                    <td>889</td>
+                    <td class="grayish right-text"></td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2" class="table-input-action-container">
                         <button>Add</button>
                     </td>
                 </tr>
                 <tr>
                     <td>Total item</td>
-                    <td>0</td>
+                    <td class="grayish right-text">0</td>
                 </tr>
             </table>
         </div>
