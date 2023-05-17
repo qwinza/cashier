@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CashierController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,4 @@ use App\Http\Controllers\CashierController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.index');
+Route::get('/invoices/{id}', [InvoiceController::class, 'show'])->name('invoice.show');

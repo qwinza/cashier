@@ -202,3 +202,33 @@ table {
     padding-block: .7rem;
     cursor: pointer;
 }
+
+.invoice-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invoice-title-container {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.invoice-container {
+    padding: 2rem;
+}
+
+.invoice-footer {
+    padding: 1rem;
+}
+
+.invoice-footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.centered-text {
+    text-align: center;
+}
