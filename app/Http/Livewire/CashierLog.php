@@ -39,7 +39,7 @@ class CashierLog extends Component
         $this->logs = $ongoingInvoice->logs;
 
         $grandTotal = $this->logs->sum(function (InvoiceLog $log) {
-            return $log->product->price;
+            return $log->total;
         });
 
         $this->emit('grandTotalChanged', $grandTotal, $ongoingInvoiceId);

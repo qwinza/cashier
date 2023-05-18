@@ -12,10 +12,16 @@ class Invoice extends Model
     protected $fillable = [
         'customer',
         'user_id',
+        'grandTotal'
     ];
 
     public function logs()
     {
         return $this->hasMany(InvoiceLog::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

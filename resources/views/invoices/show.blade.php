@@ -9,8 +9,8 @@
             <h1>Invoice</h1>
         </div>
         <div>
-            <p>Bandung, 15 Maret 2023</p>
-            <p>Kepada Yth, Sudirman</p>
+            <p>Bandung, {{ \Carbon\Carbon::parse($invoice->created_at)->translatedFormat('d M Y') }}</p>
+            <p>Kepada Yth, {{ $invoice->customer }}</p>
             <p>No. Nota N-12321312</p>
         </div>
     </div>
@@ -25,7 +25,16 @@
             </tr>
         </thead>
         <tbody>
-            @for($i = 1; $i <= 10; $i++)
+            @foreach($invoice->logs as $log)
+                <tr class="centered-text">
+                    <td>{{ $loop->index + 1 }}</td>
+                    <td>{{ $log->product->name }}</td>
+                    <td>{{ $log->product->price }}</td>
+                    <td>{{ $log->qty }}</td>
+                    <td>{{ $log->product->price * $log->qty}}</td>
+                </tr>
+            @endforeach
+            @for($i = $invoice->logs->count() + 1; $i <= 10; $i++)
                 <tr>
                     <td class="centered-text">
                         {{ $i }}
@@ -40,7 +49,7 @@
         <tfoot>
             <tr>
                 <th class="invoice-footer" colspan="3">Terbilang: Rupiah</th>
-                <th class="invoice-footer" colspan="2">Total: Rp. 50000</th>
+                <th class="invoice-footer" colspan="2">Total: Rp. {{ $invoice->grandTotal }}</th>
             </tr>
         </tfoot>
     </table>
@@ -50,7 +59,7 @@
             <p>Barang yang sudah dibeli tidak bisa dikembalikan</p>
         </div>
         <div>
-            <p>Hormat kami, BLABLABLA</p>
+            <p>Hormat kami, {{ $invoice->user->name }}</p>
         </div>
     </div>
     </div>

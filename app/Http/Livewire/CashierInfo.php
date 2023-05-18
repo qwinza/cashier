@@ -27,7 +27,8 @@ class CashierInfo extends Component
 
         $invoice = Invoice::create([
             'customer' => $ongoingInvoice->customer,
-            'user_id' => $ongoingInvoice->user_id
+            'user_id' => $ongoingInvoice->user_id,
+            'grandTotal' => $this->grandTotal
         ]);
 
         $ongoingInvoice->logs->each(function (InvoiceLog $log) use($invoice) {

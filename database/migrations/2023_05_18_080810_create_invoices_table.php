@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('customer');
             $table->foreignIdFor(User::class);
+            $table->decimal('grandTotal');
             $table->timestamps();
         });
     }
