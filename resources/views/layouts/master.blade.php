@@ -7,10 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     <title>@yield('title')</title>
+    @yield('styles')
 </head>
 <body>
     <main>
         @yield('content')
     </main>
+    @yield('scripts')
 </body>
 </html>

@@ -2,6 +2,14 @@
 
 @section('title', 'Cashier')
 
+@section('styles')
+    @livewireStyles
+@endsection
+
+@section('scripts')
+    @livewireScripts
+@endsection
+
 @section('content')
     <div class="cashier-wrapper">
     <h1 class="head-bang">Vania Store Cashier</h1>
@@ -69,64 +77,7 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            <table>
-                <caption class="table-input-caption">Input</caption>
-                <tr>
-                    <td>No. Transaksi</td>
-                    <td class="grayish right-text">N-00000001</td>
-                </tr>
-                <tr>
-                    <td>Tanggal</td>
-                    <td class="grayish right-text">15 Maret 2022</td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="customer">Customer</label>
-                    </td>
-                    <td>
-                        <input class="fw-input right-text" type="text" name="customer" id="customer">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="nama-barang">Nama barang</label>
-                    </td>
-                    <td>
-                        <select class="select-input right-text" id="nama-barang" name="nama-barang">
-                            @foreach($products as $product)
-                                <option class="right-text" value="{{ $product->id }}">{{ $product->name }}</option>
-                            @endforeach
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Harga</td>
-                    <td class="grayish right-text"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="banyaknya">Banyaknya</label>
-                    </td>
-                    <td>
-                        <input class="fw-input right-text" type="text" name="banyaknya" id="banyaknya">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jumlah</td>
-                    <td class="grayish right-text"></td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="table-input-action-container">
-                        <button>Add</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Total item</td>
-                    <td class="grayish right-text">0</td>
-                </tr>
-            </table>
-        </div>
+        @livewire('cashier-input')
     </div>
     </div>
 @endsection
