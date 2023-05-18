@@ -16,6 +16,18 @@ use App\Http\Controllers\InvoiceController;
 |
 */
 
-Route::get('/login', [LoginController::class, 'index'])->name('login.index');
-Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.index');
-Route::get('/invoices/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
+Route::get('/login', [LoginController::class, 'index'])
+    ->middleware(['guest'])
+    ->name('login.index');
+
+Route::post('/login', [LoginController::class, 'store'])
+    ->middleware(['guest'])
+    ->name('login.store');
+
+Route::get('/cashier', [CashierController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('cashier.index');
+
+Route::get('/invoices/{id}', [InvoiceController::class, 'show'])
+    ->middleware(['auth'])
+    ->name('invoice.show');
