@@ -11,17 +11,32 @@ class CashierInfo extends Component
 {
     public $grandTotal = 0;
     public $payAmount = 0;
-    public $ongoingInvoiceId = 0;
+    public $ongoingInvoiceId;
 
     protected $listeners = ['grandTotalChanged'];
+
+    protected $rules = [
+        'ongoingInvoiceId' => 'required'
+    ];
+
+    protected $messages = [
+        'ongoingInvoiceId.required' => 'There\'s no data to submit.'
+    ];
 
     public function render()
     {
         return view('livewire.cashier-info');
     }
 
+    public function onCancelClick()
+    {
+        return redirect()->route('cashier.index');
+    }
+
     public function onSubmitClick()
     {
+        $this->validate();
+
         $ongoingInvoice = OngoingInvoice::find($this->ongoingInvoiceId);
         assert(!is_null($ongoingInvoice));
 

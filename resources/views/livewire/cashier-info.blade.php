@@ -1,8 +1,17 @@
 <div class="cashier-info-container">
     <div class="action-container">
-        <button>Batal</button>
+        <button wire:click="onCancelClick">Batal</button>
         <button wire:click="onSubmitClick">Submit</button>
     </div>
+    @if($errors->any())
+        <div>
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div>
         <div class="cashier-info-field">
             <label for="grand-total">Grand total</label>
