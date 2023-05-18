@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Invoice;
 use App\Models\InvoiceLog;
 use App\Models\OngoingInvoice;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CashierInfo extends Component
@@ -31,6 +32,12 @@ class CashierInfo extends Component
     public function onCancelClick()
     {
         return redirect()->route('cashier.index');
+    }
+
+    public function onLogoutClick()
+    {
+        Auth::logout();
+        return redirect()->route('login.index');
     }
 
     public function onSubmitClick()

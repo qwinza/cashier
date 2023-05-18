@@ -2,6 +2,7 @@
     <div class="action-container">
         <button wire:click="onCancelClick">Batal</button>
         <button wire:click="onSubmitClick">Submit</button>
+        <button wire:click="onLogoutClick">Logout</button>
     </div>
     @if($errors->any())
         <div>
