@@ -94,9 +94,9 @@
                     </td>
                     <td>
                         <select class="select-input right-text" id="nama-barang" name="nama-barang">
-                            <option class="right-text" value="a">a</option>
-                            <option class="right-text" value="a">a</option>
-                            <option class="right-text" value="a">a</option>
+                            @foreach($products as $product)
+                                <option class="right-text" value="{{ $product->id }}">{{ $product->name }}</option>
+                            @endforeach
                         </select>
                     </td>
                 </tr>
