@@ -1,7 +1,7 @@
 <div class="cashier-info-container">
     <div class="action-container">
         <button>Batal</button>
-        <button>Submit</button>
+        <button wire:click="onSubmitClick">Submit</button>
     </div>
     <div>
         <div class="cashier-info-field">

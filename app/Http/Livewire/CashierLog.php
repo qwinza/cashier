@@ -28,6 +28,8 @@ class CashierLog extends Component
         $ongoingInvoice = OngoingInvoice::find($ongoingInvoiceId);
         assert(!is_null($ongoingInvoice));
 
+        $ongoingInvoice->update(['customer' => $customer]);
+
         $ongoingInvoice->logs()->create([
             'product_id' => $product->id,
             'qty' => $qty,
@@ -40,6 +42,6 @@ class CashierLog extends Component
             return $log->product->price;
         });
 
-        $this->emit('grandTotalChanged', $grandTotal);
+        $this->emit('grandTotalChanged', $grandTotal, $ongoingInvoiceId);
     }
 }

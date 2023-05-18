@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'customer',
+        'user_id',
+    ];
+
+    public function logs()
+    {
+        return $this->hasMany(InvoiceLog::class);
+    }
 }

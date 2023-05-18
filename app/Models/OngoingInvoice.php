@@ -10,6 +10,7 @@ class OngoingInvoice extends Model
     use HasFactory;
 
     protected $fillable = [
+        'customer',
         'user_id'
     ];
 
