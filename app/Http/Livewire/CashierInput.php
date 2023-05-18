@@ -9,6 +9,8 @@ use NumberFormatter;
 class CashierInput extends Component
 {
     public $products = [];
+    public $product = null;
+    public $customer = '';
     public $price = 0;
     public $priceHtml = '';
     public $totalPrice = 0;
@@ -27,12 +29,12 @@ class CashierInput extends Component
 
     public function onProductChange(int $id)
     {
-        $product = Product::find($id);
-        assert(!is_null($product));
+        $this->product = Product::find($id);
+        assert(!is_null($this->product));
 
         $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
 
-        $this->price = $product->price;
+        $this->price = $this->product->price;
         $this->priceHtml = $cf->format($this->price);
 
         $this->onQtyChange();
@@ -44,5 +46,10 @@ class CashierInput extends Component
 
         $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
         $this->totalPriceHtml = $cf->format($this->totalPrice);
+    }
+
+    public function onAddClick()
+    {
+        $this->emit('logAdded', $this->customer, $this->product->id, $this->qty);
     }
 }

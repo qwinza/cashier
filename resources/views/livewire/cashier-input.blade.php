@@ -14,7 +14,7 @@
                         <label for="customer">Customer</label>
                     </td>
                     <td>
-                        <input class="fw-input right-text" type="text" name="customer" id="customer">
+                        <input wire:model="customer" class="fw-input right-text" type="text" name="customer" id="customer">
                     </td>
                 </tr>
                 <tr>
@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="table-input-action-container">
-                        <button>Add</button>
+                        <button wire:click="onAddClick">Add</button>
                     </td>
                 </tr>
                 <tr>

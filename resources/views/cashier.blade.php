@@ -43,40 +43,8 @@
                 </div>
             </div>
         </div>
-        <div class="cashier-log-container">
-            <table>
-                <thead>
-                    <tr class="table-row-log-heading">
-                        <th>No</th>
-                        <th>Nama barang</th>
-                        <th>Harga</th>
-                        <th>Banyaknya</th>
-                        <th>Jumlah</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for($i = 0; $i < 10; $i++)
-                        <tr class="table-row-log">
-                            <td>
-                                <br>
-                            </td>
-                            <td>
-                                <br>
-                            </td>
-                            <td>
-                                <br>
-                            </td>
-                            <td>
-                                <br>
-                            </td>
-                            <td>
-                                <br>
-                            </td>
-                        </tr>
-                    @endfor
-                </tbody>
-            </table>
-        </div>
+
+        @livewire('cashier-log')
         @livewire('cashier-input')
     </div>
     </div>

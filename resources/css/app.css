@@ -162,6 +162,10 @@ table {
     width: 100%;
 }
 
+.table-row-log {
+    text-align: center;
+}
+
 .table-row-log:nth-child(odd) {
     background: rgba(211, 209, 209, 0.95);
 }
