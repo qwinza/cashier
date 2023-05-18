@@ -2,7 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\InvoiceLog;
+use App\Models\OngoingInvoice;
 use App\Models\Product;
+use Faker\Core\Number;
 use Livewire\Component;
 use NumberFormatter;
 
@@ -17,20 +20,26 @@ class CashierLog extends Component
         return view('livewire.cashier-log');
     }
 
-    public function logAdded(string $customer, int $productId, int $qty)
+    public function logAdded(string $customer, int $productId, int $qty, int $ongoingInvoiceId)
     {
         $product = Product::find($productId);
         assert(!is_null($product));
 
-        $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
+        $ongoingInvoice = OngoingInvoice::find($ongoingInvoiceId);
+        assert(!is_null($ongoingInvoice));
 
-        $log = [
-            'product_name' => $product->name,
-            'priceHtml' => $cf->format($product->price),
+        $ongoingInvoice->logs()->create([
+            'product_id' => $product->id,
             'qty' => $qty,
-            'totalPriceHtml' => $cf->format($product->price * $qty)
-        ];
+            'total' => $product->price * $qty
+        ]);
 
-        array_push($this->logs, $log);
+        $this->logs = $ongoingInvoice->logs;
+
+        $grandTotal = $this->logs->sum(function (InvoiceLog $log) {
+            return $log->product->price;
+        });
+
+        $this->emit('grandTotalChanged', $grandTotal);
     }
 }

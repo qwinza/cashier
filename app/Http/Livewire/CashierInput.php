@@ -8,6 +8,7 @@ use NumberFormatter;
 
 class CashierInput extends Component
 {
+    public $ongoingInvoiceId = 0;
     public $products = [];
     public $product = null;
     public $customer = '';
@@ -50,6 +51,6 @@ class CashierInput extends Component
 
     public function onAddClick()
     {
-        $this->emit('logAdded', $this->customer, $this->product->id, $this->qty);
+        $this->emit('logAdded', $this->customer, $this->product->id, $this->qty, $this->ongoingInvoiceId);
     }
 }

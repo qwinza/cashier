@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OngoingInvoice;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CashierController extends Controller
 {
@@ -11,6 +13,10 @@ class CashierController extends Controller
     {
         $products = Product::limit(10)->get();
 
-        return view('cashier', compact('products'));
+        $ongoingInvoiceId = OngoingInvoice::create([
+            'user_id' => Auth::user()->id
+        ])->id;
+
+        return view('cashier', compact('products', 'ongoingInvoiceId'));
     }
 }
