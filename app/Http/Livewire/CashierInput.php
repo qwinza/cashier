@@ -29,11 +29,6 @@ class CashierInput extends Component
         return view('livewire.cashier-input');
     }
 
-    public function onSelectChange()
-    {
-        dd($this->select);
-    }
-
     public function onProductChange()
     {
         $this->product = Product::find($this->selectProductId);
