@@ -8,6 +8,7 @@ use NumberFormatter;
 
 class CashierInput extends Component
 {
+    public $selectProductId = '';
     public $ongoingInvoiceId = 0;
     public $products = [];
     public $product = null;
@@ -28,9 +29,14 @@ class CashierInput extends Component
         return view('livewire.cashier-input');
     }
 
-    public function onProductChange(int $id)
+    public function onSelectChange()
     {
-        $this->product = Product::find($id);
+        dd($this->select);
+    }
+
+    public function onProductChange()
+    {
+        $this->product = Product::find($this->selectProductId);
         assert(!is_null($this->product));
 
         $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);

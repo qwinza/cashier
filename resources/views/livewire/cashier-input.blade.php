@@ -22,10 +22,10 @@
                         <label for="nama-barang">Nama barang</label>
                     </td>
                     <td>
-                        <select class="select-input right-text" id="nama-barang" name="nama-barang">
+                        <select wire:model="selectProductId" wire:change="onProductChange" class="select-input right-text" id="nama-barang" name="nama-barang">
                             <option value="Select product">Select product</option>
                             @foreach($products as $product)
-                                <option wire:click="onProductChange({{ $product->id }})" class="right-text" value="{{ $product->id }}">{{ $product->name }}</option>
+                                <option class="right-text" value="{{ $product->id }}">{{ $product->name }}</option>
                             @endforeach
                         </select>
                     </td>
