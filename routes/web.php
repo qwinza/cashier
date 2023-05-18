@@ -16,6 +16,8 @@ use App\Http\Controllers\InvoiceController;
 |
 */
 
+Route::redirect('/', '/login');
+
 Route::get('/login', [LoginController::class, 'index'])
     ->middleware(['guest'])
     ->name('login.index');
