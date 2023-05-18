@@ -8,16 +8,21 @@ use NumberFormatter;
 
 class CashierInput extends Component
 {
-    public $selectProductId = '';
+    public $selectProductId;
     public $ongoingInvoiceId = 0;
     public $products = [];
     public $product = null;
-    public $customer = '';
+    public $customer;
     public $price = 0;
     public $priceHtml = '';
     public $totalPrice = 0;
     public $totalPriceHtml = '';
     public $qty = 1;
+
+    protected $rules = [
+        'selectProductId' => 'required',
+        'customer' => 'required'
+    ];
 
     public function mount()
     {
@@ -52,6 +57,8 @@ class CashierInput extends Component
 
     public function onAddClick()
     {
+        $this->validate();
+
         $this->emit('logAdded', $this->customer, $this->product->id, $this->qty, $this->ongoingInvoiceId);
     }
 }

@@ -1,4 +1,11 @@
 <div>
+    @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
             <table>
                 <caption class="table-input-caption">Input</caption>
                 <tr>
