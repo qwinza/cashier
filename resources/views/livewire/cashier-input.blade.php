@@ -14,7 +14,7 @@
                 </tr>
                 <tr>
                     <td>Tanggal</td>
-                    <td class="grayish right-text">15 Maret 2022</td>
+                    <td class="grayish right-text">{{ \Carbon\Carbon::now()->translatedFormat('d M Y') }}</td>
                 </tr>
                 <tr>
                     <td>
