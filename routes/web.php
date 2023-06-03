@@ -39,6 +39,10 @@ Route::get('/cashier', [CashierController::class, 'index'])
     ->middleware(['auth'])
     ->name('cashier.index');
 
+Route::get('/invoices', [InvoiceController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('invoice.index');
+
 Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])
     ->middleware(['auth'])
     ->name('invoice.show');
