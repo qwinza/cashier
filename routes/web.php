@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CashierController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,17 @@ Route::get('/login', [LoginController::class, 'index'])
     ->middleware(['guest'])
     ->name('login.index');
 
+Route::get('/register', [RegisterController::class, 'index'])
+    ->middleware(['guest'])
+    ->name('register.index');
+
 Route::post('/login', [LoginController::class, 'store'])
     ->middleware(['guest'])
     ->name('login.store');
+
+Route::post('/register', [RegisterController::class, 'store'])
+    ->middleware(['guest'])
+    ->name('register.store');
 
 Route::get('/cashier', [CashierController::class, 'index'])
     ->middleware(['auth'])

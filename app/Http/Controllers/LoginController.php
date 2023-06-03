@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -16,12 +17,12 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
-        $user = User::firstWhere('name', $request->name);
-        if (is_null($user) || $user->password !== $request->password) {
+        $user = User::firstWhere('username', $request->username);
+        if (is_null($user) || ! Hash::check($request->password, $user->password)) {
             return redirect()->route('login.index')->withErrors(['login' => 'Credentials is not valid.']);
         }
 
