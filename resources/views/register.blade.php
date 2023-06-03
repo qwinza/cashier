@@ -34,6 +34,10 @@
                     <input type="text" name="username" id="username">
                 </div>
                 <div class="field-container">
+                    <label for="hint">Hint</label>
+                    <input type="text" name="hint" id="hint">
+                </div>
+                <div class="field-container">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password">
                 </div>

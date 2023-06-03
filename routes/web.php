@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CashierController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,22 @@ Route::post('/login', [LoginController::class, 'store'])
 Route::post('/register', [RegisterController::class, 'store'])
     ->middleware(['guest'])
     ->name('register.store');
+
+Route::get('/forgotpassword', [ForgotPasswordController::class, 'index'])
+    ->middleware(['guest'])
+    ->name('forgotPassword.index');
+
+Route::post('/forgotpassword', [ForgotPasswordController::class, 'store'])
+    ->middleware(['guest'])
+    ->name('forgotPassword.store');
+
+Route::get('/changepassword', [ChangePasswordController::class, 'index'])
+    ->middleware(['guest'])
+    ->name('changePassword.index');
+
+Route::post('/changepassword', [ChangePasswordController::class, 'store'])
+    ->middleware(['guest'])
+    ->name('changePassword.store');
 
 Route::get('/cashier', [CashierController::class, 'index'])
     ->middleware(['auth'])

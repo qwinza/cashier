@@ -17,6 +17,9 @@
                         @endforeach
                     </ul>
                 @endif
+                @if(session('onChangedPassword'))
+                    <p>{{ session('onChangedPassword') }}</p>
+                @endif
                 <h1>Login</h1>
                 <div class="field-container">
                     <label for="username">Username</label>
@@ -27,7 +30,7 @@
                     <input type="password" name="password" id="password">
                 </div>
                 <div class="mb-2">
-                    <a class="text-end">Forgot password</a>
+                    <a class="text-end" href="{{ route('forgotPassword.index') }}">Forgot password</a>
                 </div>
                 <button>Log in</button>
                 <span class="d-block text-center mb-2">Or</span>

@@ -18,7 +18,8 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required',
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'hint' => 'required'
         ]);
 
         if (User::where('username', $request->username)->exists()) {
@@ -31,7 +32,8 @@ class RegisterController extends Controller
             'role' => $request->role,
             'name' => $request->name,
             'username' => $request->username,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'hint' => $request->hint
         ]);
 
         Auth::login($user);
