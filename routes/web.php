@@ -7,6 +7,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,3 +65,24 @@ Route::get('/invoices', [InvoiceController::class, 'index'])
 Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])
     ->middleware(['auth'])
     ->name('invoice.show');
+
+Route::get('/products', [ProductController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('product.index');
+
+Route::post('/products', [ProductController::class, 'store'])
+    ->middleware(['auth'])
+    ->name('product.store');
+
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])
+    ->middleware(['auth'])
+    ->name('product.edit');
+
+Route::post('/products/{product}', [ProductController::class, 'update'])
+    ->middleware(['auth'])
+    ->name('product.update');
+
+Route::get('/products/create', [ProductController::class, 'create'])
+    ->middleware(['auth'])
+    ->name('product.create');
+

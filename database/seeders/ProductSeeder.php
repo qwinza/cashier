@@ -36,6 +36,11 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::insert($this->products);
+        foreach($this->products as $product) {
+            Product::create([
+                'name' => $product['name'],
+                'price' => $product['price']
+            ]);
+        }
     }
 }

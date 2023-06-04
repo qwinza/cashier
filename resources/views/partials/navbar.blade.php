@@ -6,6 +6,7 @@
                 <a class="nav-link" href="{{ route('invoice.index') }}">Invoices</a>
             @endif
             <a class="nav-link" href="{{ route('cashier.index') }}">Cashier</a>
+            <a class="nav-link" href="{{ route('product.index') }}">Products</a>
             <span>{{ '@' . auth()->user()->username }}</span>
         </div>
     </div>
