@@ -4,8 +4,8 @@
         <div class="d-flex gap-3">
             @if(auth()->user()->role === 'management')
                 <a class="nav-link" href="{{ route('invoice.index') }}">Invoices</a>
-                <a class="nav-link" href="{{ route('cashier.index') }}">Cashier</a>
             @endif
+            <a class="nav-link" href="{{ route('cashier.index') }}">Cashier</a>
             <span>{{ '@' . auth()->user()->username }}</span>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="cashier-log-container">
-    <table>
+    <table class="table table-striped table-bordered text-center">
         <thead>
         <tr class="table-row-log-heading">
             <th>No</th>

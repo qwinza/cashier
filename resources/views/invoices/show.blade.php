@@ -6,6 +6,7 @@
     @php
         $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
     @endphp
+    @include('partials.navbar')
     <div class="invoice-container">
     <div class="invoice-header-container">
         <div class="invoice-title-container">
@@ -17,7 +18,7 @@
             <p>No. Nota N-12321312</p>
         </div>
     </div>
-    <table>
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>No</th>
