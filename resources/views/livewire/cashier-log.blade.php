@@ -10,9 +10,9 @@
         </tr>
         </thead>
         <tbody>
-        @php
+        {{-- @php
             $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
-        @endphp
+        @endphp --}}
         @foreach($logs as $log)
             <tr class="table-row-log">
                 <td>
@@ -22,13 +22,13 @@
                     {{ $log->product->name }}
                 </td>
                 <td>
-                    {{ $cf->format($log->product->price) }}
+                    {{ $log->product->price }}
                 </td>
                 <td>
                     {{ $log->qty }}
                 </td>
                 <td>
-                    {{ $cf->format($log->total) }}
+                    {{ $log->total }}
                 </td>
             </tr>
         @endforeach

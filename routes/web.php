@@ -78,11 +78,18 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])
     ->middleware(['auth'])
     ->name('product.edit');
 
-Route::post('/products/{product}', [ProductController::class, 'update'])
+Route::post('/products/{product}/verify-password', [ProductController::class, 'verifyPassword'])
+    ->middleware(['auth'])
+    ->name('product.verifyPassword');
+
+Route::put('/products/{product}/edit', [ProductController::class, 'update'])
     ->middleware(['auth'])
     ->name('product.update');
+
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])
+    ->middleware(['auth'])
+    ->name('product.destroy');
 
 Route::get('/products/create', [ProductController::class, 'create'])
     ->middleware(['auth'])
     ->name('product.create');
-

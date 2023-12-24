@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProductController extends Controller
 {
@@ -19,9 +21,30 @@ class ProductController extends Controller
         return view('products.create');
     }
 
+    public function  __construct()
+    {
+        $this->middleware('auth.password')->only('edit');
+    }
+
     public function edit(Product $product)
     {
+
         return view('products.edit', compact('product'));
+    }
+
+    public function verifyPassword(Request $request, Product $product)
+    {
+        $request->validate([
+            'password' => 'required',
+        ]);
+
+        $password = $request->password;
+
+        if (!Hash::check($password, Auth::user()->password)) {
+            return redirect()->back()->with('error', 'Password Salah');
+        }
+
+        return view('products.edit', compact('product'))->with('update', 'success');
     }
 
     public function store(Request $request)
@@ -33,7 +56,8 @@ class ProductController extends Controller
 
         $product = Product::create([
             'name' => $request->name,
-            'price' => $request->price
+            'price' => $request->price,
+            'quantity' => $request->quantity,
         ]);
 
         return redirect()->route('product.create')->with('createId', $product->id);
@@ -43,19 +67,40 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required|numeric|gt:0'
+            'price' => 'required|numeric|gt:0',
+            'quantity' => 'required'
         ]);
 
-        if ($request->action === 'Delete') {
+        if ($request->action === 'Submit') {
+            $product->update([
+                'name' => $request->name,
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+            ]);
+
+            return redirect()->route('product.index')->with('update', 'success');
+        } elseif ($request->action === 'Delete') {
             $product->delete();
-            return redirect()->route('product.index')->with('delete', 'success');
+
+            return redirect()->route('product.index')->with('update', 'success');
         }
 
-        $product->update([
-            'name' => $request->name,
-            'price' => $request->price
+        return redirect()->route('product.index')->with('error', 'Invalid action for update');
+    }
+
+
+
+    public function destroy(Request $request, Product $product)
+    {
+        $request->validate([
+            'password' => 'required|string',
         ]);
 
-        return redirect()->route('product.edit', $product->id)->with('update', 'success');
+        if (Hash::check($request->password, auth()->user()->password)) {
+            $product->delete();
+            return redirect()->route('product.index')->with('delete', 'success');
+        } else {
+            return redirect()->route('product.index')->with('error', 'Invalid password for product deletion');
+        }
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
+use Illuminate\Http\Request as HttpRequest;
 use Livewire\Component;
-use NumberFormatter;
 
 class CashierInput extends Component
 {
@@ -38,11 +38,10 @@ class CashierInput extends Component
     {
         $this->product = Product::find($this->selectProductId);
         assert(!is_null($this->product));
-
-        $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
+        // $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
 
         $this->price = $this->product->price;
-        $this->priceHtml = $cf->format($this->price);
+        $this->priceHtml = $this->price;
 
         $this->onQtyChange();
     }
@@ -51,14 +50,27 @@ class CashierInput extends Component
     {
         $this->totalPrice = $this->price * (int)$this->qty;
 
-        $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
-        $this->totalPriceHtml = $cf->format($this->totalPrice);
+        // $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
+        $this->totalPriceHtml = $this->totalPrice;
     }
 
     public function onAddClick()
     {
         $this->validate();
 
-        $this->emit('logAdded', $this->customer, $this->product->id, $this->qty, $this->ongoingInvoiceId);
+        $product = Product::find($this->selectProductId);
+
+        if($product){
+            if($product->quantity >= $this->qty){
+                $product->quantity -= $this->qty;
+                $product->save();
+
+                $this->emit('logAdded', $this->customer, $product->id, $this->qty, $this->ongoingInvoiceId);
+
+            }else{
+                session()->flash('error', 'Barang Tidak Cukup');
+            }
+        }
+
     }
 }

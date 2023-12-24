@@ -55,6 +55,10 @@
                             <label for="price" class="form-label">Price</label>
                             <input name="price" type="number" class="form-control" id="price">
                         </div>
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input name="quantity" type="number" class="form-control" id="quantity">
+                        </div>
                         <div class="bbb">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

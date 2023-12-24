@@ -3,9 +3,9 @@
 @section('title', 'Invoices')
 
 @section('content')
-    @php
+    {{-- @php
         $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
-    @endphp
+    @endphp --}}
     @include('partials.navbar')
     <div class="invoice-container">
     <div class="invoice-header-container">
@@ -33,9 +33,9 @@
                 <tr class="centered-text">
                     <td>{{ $loop->index + 1 }}</td>
                     <td>{{ $log->product->name }}</td>
-                    <td>{{ $cf->format($log->product->price) }}</td>
+                    <td>{{ $log->product->price  }}</td>
                     <td>{{ $log->qty }}</td>
-                    <td>{{ $cf->format($log->product->price * $log->qty) }}</td>
+                    <td>{{ $log->product->price * $log->qty }}</td>
                 </tr>
             @endforeach
             @for($i = $invoice->logs->count() + 1; $i <= 10; $i++)
@@ -53,7 +53,7 @@
         <tfoot>
             <tr>
                 <th class="invoice-footer" colspan="3">Terbilang: Rupiah</th>
-                <th class="invoice-footer" colspan="2">Total: Rp. {{ $cf->format($invoice->grandTotal) }}</th>
+                <th class="invoice-footer" colspan="2">Total: Rp. {{ $invoice->grandTotal }}</th>
             </tr>
         </tfoot>
     </table>

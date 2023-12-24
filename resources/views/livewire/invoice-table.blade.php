@@ -1,6 +1,6 @@
-@php
+{{-- @php
     $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
-@endphp
+@endphp --}}
 <table class="table table-striped text-center table-bordered">
     <thead>
     <tr>
@@ -17,7 +17,7 @@
             <th scope="row">{{ $loop->index + 1 }}</th>
             <td>{{ $invoice->customer }}</td>
             <td>{{ $invoice->user->name }}</td>
-            <td>{{ $cf->format($invoice->grandTotal) }}</td>
+            <td>{{ $invoice->grandTotal }}</td>
             <td>
                 <a href="{{ route('invoice.show', $invoice->id) }}">Lihat detail</a>
             </td>

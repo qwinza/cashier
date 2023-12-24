@@ -13,6 +13,7 @@ class CashierController extends Controller
     {
         $products = Product::limit(10)->get();
 
+
         $ongoingInvoiceId = OngoingInvoice::create([
             'user_id' => Auth::user()->id
         ])->id;
