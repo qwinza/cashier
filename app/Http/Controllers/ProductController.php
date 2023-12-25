@@ -49,18 +49,33 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
+        $number = mt_rand(1000000000, 9999999999);
+
+        if($this->productCodeExists($number)) {
+            $number = mt_rand(1000000000, 9999999999);
+        }
+
         $request->validate([
             'name' => 'required',
             'price' => 'required|numeric|gt:0'
         ]);
 
+        $request['barcode'] = $number;
+
         $product = Product::create([
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
+            'barcode' => $request->barcode,
         ]);
 
         return redirect()->route('product.create')->with('createId', $product->id);
+    }
+
+    public function productCodeExists($number)
+    {
+        return product::whereBarcode($number)->exists();
     }
 
     public function update(Request $request, Product $product)

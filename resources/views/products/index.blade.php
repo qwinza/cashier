@@ -3,9 +3,6 @@
 @section('title', 'Products')
 
 @section('content')
-    {{-- @php
-        $cf = new NumberFormatter('id_ID', NumberFormatter::CURRENCY);
-    @endphp --}}
     @include('partials.navbar')
     <div class="p-4">
         <h1>Products</h1>
@@ -35,6 +32,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
+                    <th scope="col">Barcode</th>
                     <th scope="col">Added At</th>
                     @if (auth()->user()->role === 'management')
                         <th scope="col">Action</th>
@@ -48,6 +46,12 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->quantity }}</td>
+                        <td style="text-align: center; vertical-align: middle;">
+                            <div style="display: inline-block; text-align: center;">
+                                {!! DNS1D::getBarcodeHTML("$product->barcode", 'UPCA', 2, 50) !!}
+                                p - {{ $product->barcode }}
+                            </div>
+                        </td>
                         <td>{{ $product->created_at }}</td>
                         @if (auth()->user()->role === 'management')
                             <td>
